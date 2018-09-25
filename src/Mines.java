@@ -8,7 +8,6 @@ class Mines {
     static int[][] minageTerrain(int[][] grille, int nbrMines) {
 
         for (int a = 0; a < nbrMines; a++) {
-
             int mineHauteur = (int) (Math.random() * grille.length);
             int mineLargeur = (int) (Math.random() * grille[0].length);
 
@@ -64,6 +63,11 @@ class Mines {
         Tableau game = new Tableau(hauteur, largeur);
 
         int[][] games = Mines.tabMines(game);
+
+        if (nmbrMines > hauteur*largeur - 1){
+            nmbrMines = hauteur*largeur-1;
+        }
+
         Mines.minageTerrain(games, nmbrMines);
         Mines.detecteurMines(games);
 

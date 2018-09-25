@@ -2,7 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Mines.rendering(4,4,15);
+        //generate
+        Mines.rendering(10,10, 0);
 
     }
 
