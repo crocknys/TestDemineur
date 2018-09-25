@@ -14,8 +14,35 @@ class Mines {
 
             if (grille[mineHauteur][mineLargeur] != 8) {
                 grille[mineHauteur][mineLargeur] = 8;
-            } else {
-                a--;
+            }
+        }
+
+        return grille;
+    }
+
+    static int[][] detecteurMines(int[][] grille) {
+
+        int hauteur = grille.length;
+        int largeur = grille[0].length;
+
+        for (int a = 0; a < grille.length; a++) {
+            for (int b = 0; b < grille[a].length; b++) {
+                int plot = grille[a][b];
+
+                if (plot == 8) {
+                    if ((a > 0) && (grille[a - 1][b] != 8)) {
+                        grille[a - 1][b] += 1;
+                    }
+                    if ((a < hauteur - 1) && (grille[a + 1][b] != 8)) {
+                        grille[a + 1][b] += 1;
+                    }
+                    if ((b > 0) && (grille[a][b - 1] != 8)) {
+                        grille[a][b - 1] += 1;
+                    }
+                    if ((b < largeur - 1) && (grille[a][b + 1] != 8)) {
+                        grille[a][b + 1] += 1;
+                    }
+                }
             }
         }
 
@@ -26,7 +53,7 @@ class Mines {
 
         for (int a = 0; a < grille.length; a++) {
             for (int b = 0; b < grille[a].length; b++) {
-                System.out.print(grille[b][a]);
+                System.out.print(grille[a][b]);
             }
             System.out.println();
         }
@@ -38,6 +65,7 @@ class Mines {
 
         int[][] games = Mines.tabMines(game);
         Mines.minageTerrain(games, nmbrMines);
+        Mines.detecteurMines(games);
 
         System.out.println("Longeur: " + games[0].length);
         System.out.println("hauteur: " + games.length);

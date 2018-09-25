@@ -2,7 +2,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Mines.rendering(3,3,4);
+        // new Graphic(4,4,2);
+        Mines.rendering(4,4,15);
+
     }
 
 
